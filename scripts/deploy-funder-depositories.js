@@ -5,6 +5,7 @@ const { computeFunderDepositoryAddress } = require('../src/index');
 
 async function main() {
   const config = JSON.parse(fs.readFileSync('./config/config.json'));
+  // It would be good to validate the config here, for example, to check if there are duplicate recipients
   const Funder = await deployments.get('Funder');
   const funder = new ethers.Contract(Funder.address, Funder.abi, (await ethers.getSigners())[0]);
   await Promise.all(
